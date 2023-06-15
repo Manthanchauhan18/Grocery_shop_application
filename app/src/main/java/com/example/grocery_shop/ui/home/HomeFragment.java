@@ -1,10 +1,12 @@
 package com.example.grocery_shop.ui.home;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.grocery_shop.R;
+import com.example.grocery_shop.Razor_pay;
 import com.example.grocery_shop.adapter.GroceryAdapter;
 import com.example.grocery_shop.databinding.FragmentHomeBinding;
 import com.example.grocery_shop.model.Grocery;
@@ -39,6 +42,7 @@ public class HomeFragment<FragmentHomeBinding> extends Fragment {
 
     ArrayList<Grocery> groceryList;
     RecyclerView recyclerView;
+    Button btGroceryOrderConfirm;
     FirebaseDatabase db;
     DatabaseReference dbref;
     GroceryAdapter groceryAdapter;
@@ -57,6 +61,7 @@ public class HomeFragment<FragmentHomeBinding> extends Fragment {
         dbref = FirebaseDatabase.getInstance().getReference("grocery");
 
         recyclerView = root.findViewById(R.id.recycler_grocery_list);
+        btGroceryOrderConfirm = root.findViewById(R.id.btGroceryOrderConfirm);
 
 
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
@@ -83,6 +88,15 @@ public class HomeFragment<FragmentHomeBinding> extends Fragment {
 
             }
 
+        });
+
+
+        btGroceryOrderConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_razor_pay = new Intent(getActivity() , Razor_pay.class);
+                startActivity(intent_razor_pay);
+            }
         });
 
 

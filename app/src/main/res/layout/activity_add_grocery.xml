@@ -102,6 +102,26 @@
 
             </EditText>
 
+
+            <EditText
+                android:id="@+id/etAdaddamount"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:hint=" Quntity"
+                android:inputType="number"
+                android:textSize="25dp"
+                android:textColorHint="#000000"
+                android:textColor="#000000"
+                android:background="@drawable/addgroceryroundedbutton"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+
+
+            </EditText>
+
             <Button
                 android:id="@+id/btAdaddimage"
                 android:layout_width="match_parent"

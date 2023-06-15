@@ -24,14 +24,14 @@ import com.google.firebase.storage.UploadTask;
 
 public class AddGrocery extends Activity {
 
-    EditText etAdaddname,etAdaddprice;
+    EditText etAdaddname,etAdaddprice,etAdaddamount;
     Button btAdaddimage,btAdadditem;
     ProgressBar pbAdadd;
     Uri imagePath;
     DatabaseReference dbRef;
     StorageReference storage,store;
     String gName;
-    int price;
+    int price,amount;
     String imageUrl;
     String gid;
 
@@ -43,6 +43,7 @@ public class AddGrocery extends Activity {
 
         etAdaddname = findViewById(R.id.etAdaddname);
         etAdaddprice = findViewById(R.id.etAdaddprice);
+        etAdaddamount = findViewById(R.id.etAdaddamount);
 
         btAdaddimage = findViewById(R.id.btAdaddimage);
         btAdadditem = findViewById(R.id.btAdadditem);
@@ -66,6 +67,7 @@ public class AddGrocery extends Activity {
 
                 gName=etAdaddname.getText().toString();
                 price=Integer.parseInt(etAdaddprice.getText().toString());
+                amount=Integer.parseInt(etAdaddamount.getText().toString());
 
                 dbRef= FirebaseDatabase.getInstance().getReference("grocery");
                 storage= FirebaseStorage.getInstance().getReferenceFromUrl("gs://grocery-shop-5271c.appspot.com");
@@ -87,7 +89,7 @@ public class AddGrocery extends Activity {
                                     {
                                         Toast.makeText(getApplicationContext(),"Image Uploaded",Toast.LENGTH_SHORT).show();
 
-                                        Grocery g=new Grocery(gid,uri.toString(),gName,price);
+                                        Grocery g=new Grocery(gid,uri.toString(),gName,price,amount);
 
                                         dbRef.child(gid).setValue(g);
 
@@ -98,6 +100,7 @@ public class AddGrocery extends Activity {
 
                                         etAdaddprice.setText("");
                                         etAdaddname.setText("");
+                                        etAdaddamount.setText("");
 
                                     }
                                 });

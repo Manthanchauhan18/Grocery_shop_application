@@ -46,7 +46,11 @@ public class MainActivity extends AppCompatActivity {
         txt_log_signUp = findViewById(R.id.txt_log_signUp);
         btn_log_login = findViewById(R.id.btn_log_login);
         edit_log_email = findViewById(R.id.edit_log_email);
+        edit_log_email.setText("");
+
         edit_log_password = findViewById(R.id.edit_log_password);
+        edit_log_password.setText("");
+
         progressBar = findViewById(R.id.progressbar);
         progressBar.setVisibility(View.GONE);
 
